@@ -39,8 +39,6 @@
 #### [Exchange.sol](https://github.com/0xProject/contracts/tree/master/contracts/Exchange.sol)
 Exchange contains all business logic associated with executing trades and cancelling orders. Exchange accepts orders that conform to 0x message format, allowing for off-chain order relay with on-chain settlement. Exchange is designed to be replaced as protocol improvements are adopted over time. It follows that Exchange does not have direct access to ERC20 token allowances; instead, all transfers are carried out by Proxy on behalf of Exchange.
 
--
-
 #### [Proxy.sol](https://github.com/0xProject/contracts/tree/master/contracts/Proxy.sol)
 Proxy is analogous to a valve that may be opened or shut by MultiSigWalletWithTimeLock, either allowing or preventing Exchange from executing trades. Proxy plays a key role in 0x protocol's update mechanism: old versions of the Exchange contract may be deprecated, preventing them from executing further trades. New and improved versions of the Exchange contract are given permission to execute trades through decentralized governance implemented within a DAO (for now we use MultiSigWallet as a placeholder for DAO).
 
