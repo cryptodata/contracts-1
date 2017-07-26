@@ -52,8 +52,9 @@ TokenRegistry stores metadata associated with ERC20 tokens. TokenRegistry entrie
 
 #### Kovan
 
-Commit Hash:
-Branch:
+Commit Hash: ?
+
+Branch: ?
 
 * Exchange.sol: [0x63869171a246622ef8f9234879ce2c06cebd85f6](https://kovan.etherscan.io/address/0x63869171a246622ef8f9234879ce2c06cebd85f6)
 * Proxy.sol: [0x946a1c437fb5a61bd5c95416346e684c802c5d2a](https://kovan.etherscan.io/address/0x946a1c437fb5a61bd5c95416346e684c802c5d2a)
@@ -62,9 +63,9 @@ Branch:
 
 #### Mainnet
 
-Commit Hash:
-Branch:
-To be deployed August 2017.
+Commit Hash: TBD
+
+Branch: TBD
 
 * Exchange.sol: TBD
 * Proxy.sol: TBD
