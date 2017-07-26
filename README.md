@@ -39,6 +39,8 @@
 #### [Exchange.sol](https://github.com/0xProject/contracts/tree/master/contracts/Exchange.sol)
 Exchange contains all business logic associated with executing trades and cancelling orders. Exchange accepts orders that conform to 0x message format, allowing for off-chain order relay with on-chain settlement. Exchange is designed to be replaced as protocol improvements are adopted over time. It follows that Exchange does not have direct access to ERC20 token allowances; instead, all transfers are carried out by Proxy on behalf of Exchange.
 
+-
+
 #### [Proxy.sol](https://github.com/0xProject/contracts/tree/master/contracts/Proxy.sol)
 Proxy is analogous to a valve that may be opened or shut by MultiSigWalletWithTimeLock, either allowing or preventing Exchange from executing trades. Proxy plays a key role in 0x protocol's update mechanism: old versions of the Exchange contract may be deprecated, preventing them from executing further trades. New and improved versions of the Exchange contract are given permission to execute trades through decentralized governance implemented within a DAO (for now we use MultiSigWallet as a placeholder for DAO).
 
@@ -52,6 +54,9 @@ TokenRegistry stores metadata associated with ERC20 tokens. TokenRegistry entrie
 
 #### Kovan
 
+Commit Hash:
+Branch:
+
 * Exchange.sol: [0x63869171a246622ef8f9234879ce2c06cebd85f6](https://kovan.etherscan.io/address/0x63869171a246622ef8f9234879ce2c06cebd85f6)
 * Proxy.sol: [0x946a1c437fb5a61bd5c95416346e684c802c5d2a](https://kovan.etherscan.io/address/0x946a1c437fb5a61bd5c95416346e684c802c5d2a)
 * MultiSigWalletWithTimeLock.sol: [0xa9a207b3df3f0d3ca33acf399e9af5db5902db39](https://kovan.etherscan.io/address/0xa9a207b3df3f0d3ca33acf399e9af5db5902db39)
@@ -59,6 +64,8 @@ TokenRegistry stores metadata associated with ERC20 tokens. TokenRegistry entrie
 
 #### Mainnet
 
+Commit Hash:
+Branch:
 To be deployed August 2017.
 
 * Exchange.sol: TBD
