@@ -24,7 +24,7 @@
 * [Setup](#setup)
     * [Installing Dependencies](#installing-dependencies)
     * [Running Tests](#running-tests)
-    * [Contributing](#contributing)
+* [Contributing](#contributing)
 
 ## Architecture
 
@@ -198,9 +198,14 @@ Run tests
 npm run test
 ```
 
-### Contributing
+## Contributing
 
-#### Coding conventions
+0x protocol is intended to serve as an open technical standard for EVM blockchains and we strongly encourage our community members to help us make improvements and to determine the future direction of the protocol. To report bugs within the 0x smart contracts or unit tests, please create an issue in this repository.
+
+### ZEIPs
+Significant changes to 0x protocol's smart contracts, architecture, message format or functionality should be proposed in the [0x Improvement Proposals (ZEIPs)](https://github.com/0xProject/ZEIPs) repository. Follow the contribution guidelines provided therein.
+
+### Coding conventions
 
 We use a custom set of [TSLint](https://palantir.github.io/tslint/) rules to enforce our coding conventions.
 
