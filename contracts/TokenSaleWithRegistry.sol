@@ -152,7 +152,7 @@ contract TokenSale is Ownable, SafeMath {
             s
         ));
 
-        assert(ethToken.approve(exchange.PROXY_CONTRACT(), order.takerTokenAmount));
+        assert(ethToken.approve(exchange.TOKEN_PROXY_CONTRACT(), order.takerTokenAmount));
         isSaleInitialized = true;
         startTimeInSec = _startTimeInSec;
         baseEthCapPerAddress = _baseEthCapPerAddress;
