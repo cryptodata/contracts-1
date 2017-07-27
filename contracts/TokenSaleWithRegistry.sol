@@ -249,7 +249,7 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
     function getOrderHash(address[5] orderAddresses, uint[6] orderValues)
         public
         constant
-        returns (bytes32 orderHash)
+        returns (bytes32)
     {
         return keccak256(
             EXCHANGE_CONTRACT,
@@ -282,7 +282,7 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
         bytes32 s)
         public
         constant
-        returns (bool isValid)
+        returns (bool)
     {
         return pubKey == ecrecover(
             keccak256("\x19Ethereum Signed Message:\n32", hash),
