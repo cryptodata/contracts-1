@@ -17,7 +17,7 @@
 */
 pragma solidity ^0.4.11;
 
-import "./Proxy.sol";
+import "./TokenProxy.sol";
 import "./base/Token.sol";
 import "./base/SafeMath.sol";
 
@@ -162,13 +162,13 @@ contract Exchange is SafeMath {
         uint paidMakerFee;
         uint paidTakerFee;
         filled[order.orderHash] = safeAdd(filled[order.orderHash], filledTakerTokenAmount);
-        assert(transferViaProxy(
+        assert(transferViaTokenProxy(
             order.makerToken,
             order.maker,
             msg.sender,
             filledMakerTokenAmount
         ));
-        assert(transferViaProxy(
+        assert(transferViaTokenProxy(
             order.takerToken,
             msg.sender,
             order.maker,
@@ -177,7 +177,7 @@ contract Exchange is SafeMath {
         if (order.feeRecipient != address(0)) {
             if (order.makerFee > 0) {
                 paidMakerFee = getPartialAmount(filledTakerTokenAmount, order.takerTokenAmount, order.makerFee);
-                assert(transferViaProxy(
+                assert(transferViaTokenProxy(
                     ZRX_TOKEN_CONTRACT,
                     order.maker,
                     order.feeRecipient,
@@ -186,7 +186,7 @@ contract Exchange is SafeMath {
             }
             if (order.takerFee > 0) {
                 paidTakerFee = getPartialAmount(filledTakerTokenAmount, order.takerTokenAmount, order.takerFee);
-                assert(transferViaProxy(
+                assert(transferViaTokenProxy(
                     ZRX_TOKEN_CONTRACT,
                     msg.sender,
                     order.feeRecipient,
@@ -527,7 +527,7 @@ contract Exchange is SafeMath {
     /// @param to Address receiving token.
     /// @param value Amount of token to transfer.
     /// @return Success of token transfer.
-    function transferViaProxy(
+    function transferViaTokenProxy(
         address token,
         address from,
         address to,
@@ -535,7 +535,7 @@ contract Exchange is SafeMath {
         internal
         returns (bool success)
     {
-        return Proxy(PROXY_CONTRACT).transferFrom(token, from, to, value);
+        return TokenProxy(PROXY_CONTRACT).transferFrom(token, from, to, value);
     }
 
     /// @dev Checks if any order transfers will fail.
