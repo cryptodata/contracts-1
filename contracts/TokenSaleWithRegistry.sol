@@ -63,17 +63,17 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
     }
 
     modifier saleInitialized() {
-        assert(isInitialized);
+        require(isInitialized);
         _;
     }
 
     modifier saleNotInitialized() {
-        assert(!isInitialized);
+        require(!isInitialized);
         _;
     }
 
     modifier saleNotFinished() {
-        assert(!isFinished);
+        require(!isFinished);
         _;
     }
 
@@ -153,7 +153,7 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
             s
         ));
 
-        assert(Token(ETH_TOKEN_CONTRACT).approve(PROXY_CONTRACT, order.takerTokenAmount));
+        require(Token(ETH_TOKEN_CONTRACT).approve(PROXY_CONTRACT, order.takerTokenAmount));
         isInitialized = true;
 
         Initialized(
@@ -189,7 +189,7 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
 
         contributed[msg.sender] = safeAdd(contributed[msg.sender], ethToFill);
 
-        assert(exchange.fillOrKillOrder(
+        require(exchange.fillOrKillOrder(
             [order.maker, order.taker, order.makerToken, order.takerToken, order.feeRecipient],
             [order.makerTokenAmount, order.takerTokenAmount, order.makerFee, order.takerFee, order.expirationTimestampInSec, order.salt],
             ethToFill,
@@ -198,10 +198,10 @@ contract TokenSaleWithRegistry is Ownable, SafeMath {
             order.s
         ));
         uint filledProtocolToken = safeDiv(safeMul(order.makerTokenAmount, ethToFill), order.takerTokenAmount);
-        assert(protocolToken.transfer(msg.sender, filledProtocolToken));
+        require(protocolToken.transfer(msg.sender, filledProtocolToken));
 
         if (ethToFill < msg.value) {
-            assert(msg.sender.send(safeSub(msg.value, ethToFill)));
+            require(msg.sender.send(safeSub(msg.value, ethToFill)));
         }
         if (remainingEth == ethToFill) {
             isFinished = true;
